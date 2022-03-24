@@ -6,6 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "nx": "nx",
     "affected:lint": "nx affected:lint",
     "heroku-postbuild": "nx build $PROJECT_NAME --prod"
   },
