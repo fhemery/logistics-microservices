@@ -1,19 +1,29 @@
-import { Module } from '@nestjs/common';
+import { Module } from "@nestjs/common";
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { PingController } from './ping/ping.controller';
-import { RefModule } from '@log/ref';
-import { environment } from '../environments/environment';
-import { ClientsModule } from '@log/clients';
-import { SupplyModule } from '@log/supply';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver } from '@nestjs/apollo';
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { MongooseModule } from "@nestjs/mongoose";
+import { PingController } from "./ping/ping.controller";
+import { RefModule } from "@log/ref";
+import { ClientsModule } from "@log/clients";
+import { SupplyModule } from "@log/supply";
+import { GraphQLModule } from "@nestjs/graphql";
+import { ApolloDriver } from "@nestjs/apollo";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { environment } from "../environments/environment";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(environment.mongoUrl),
+    ConfigModule.forRoot(),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_URL') || environment.mongoUrl,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+      inject: [ConfigService],
+    }),
     RefModule,
     ClientsModule,
     SupplyModule,
