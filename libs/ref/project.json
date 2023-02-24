@@ -1,5 +1,6 @@
 {
-  "root": "libs/ref",
+  "name": "ref",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ref/src",
   "projectType": "library",
   "targets": {
@@ -12,9 +13,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/ref"],
+      "outputs": ["{workspaceRoot}/coverage/libs/ref"],
       "options": {
-        "jestConfig": "libs/ref/jest.config.js",
+        "jestConfig": "libs/ref/jest.config.ts",
         "passWithNoTests": true
       }
     }

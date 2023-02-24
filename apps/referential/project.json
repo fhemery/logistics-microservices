@@ -1,16 +1,19 @@
 {
-  "root": "apps/referential",
+  "name": "referential",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/referential/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/referential",
         "main": "apps/referential/src/main.ts",
         "tsConfig": "apps/referential/tsconfig.app.json",
-        "assets": ["apps/referential/src/assets"]
+        "assets": ["apps/referential/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -27,7 +30,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "referential:build"
       }
@@ -41,9 +44,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/referential"],
+      "outputs": ["{workspaceRoot}/coverage/apps/referential"],
       "options": {
-        "jestConfig": "apps/referential/jest.config.js",
+        "jestConfig": "apps/referential/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,5 +1,6 @@
 {
-  "root": "libs/supply",
+  "name": "supply",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/supply/src",
   "projectType": "library",
   "targets": {
@@ -12,9 +13,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/supply"],
+      "outputs": ["{workspaceRoot}/coverage/libs/supply"],
       "options": {
-        "jestConfig": "libs/supply/jest.config.js",
+        "jestConfig": "libs/supply/jest.config.ts",
         "passWithNoTests": true
       }
     }

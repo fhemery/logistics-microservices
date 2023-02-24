@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  mongoUrl: 'mongodb://localhost:27017/referential',
+  mongoUrl: 'mongodb://docker:mongopw@localhost:49153/referential?authSource=admin',
 };
