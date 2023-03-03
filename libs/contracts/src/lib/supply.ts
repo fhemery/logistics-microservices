@@ -1,4 +1,4 @@
-interface SupplyProductDto {
+export interface SupplyProductDto {
   ean: string;
   name: string;
   description: string;
