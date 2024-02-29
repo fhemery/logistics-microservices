@@ -17,7 +17,7 @@ export interface OrderDetailsDto {
   products: PurchasedProductDto[];
 }
 
-enum OrderStatusDto {
+export enum OrderStatusDto {
   Pending = 'Pending',
   Delivered = 'Delivered',
 }

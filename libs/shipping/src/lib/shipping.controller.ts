@@ -1,6 +1,16 @@
 import { Body, Controller, Get, HttpCode, Post } from "@nestjs/common";
 import { ShippingService } from './shipping.service';
 import { ShippingRequestDto } from "@log/contracts";
+import { IsNotEmpty, IsNumber, Min } from "class-validator";
+
+class ShippingRequestDtoImpl implements ShippingRequestDto{
+  @IsNotEmpty()
+  orderId!: string;
+
+  @IsNumber({maxDecimalPlaces: 0})
+  @Min(1)
+  nbProducts!: number;
+}
 
 @Controller('shipping')
 export class ShippingController {
@@ -13,7 +23,7 @@ export class ShippingController {
 
   @Post()
   @HttpCode(204)
-  requestShipping(@Body() request: ShippingRequestDto) {
-
+  async requestShipping(@Body() request: ShippingRequestDtoImpl) {
+    await this.shippingService.requestShipping(request.orderId, request.nbProducts);
   }
 }

@@ -4,7 +4,7 @@ export interface StockMovementDto {
   status: StockMovementType;
 }
 
-enum StockMovementType {
+export enum StockMovementType {
   Supply = 'Supply',
   Reserve = 'Reserve',
   Removal = 'Removal',
