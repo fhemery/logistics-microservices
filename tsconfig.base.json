@@ -18,7 +18,8 @@
       "@log/clients": ["libs/clients/src/index.ts"],
       "@log/contracts": ["libs/contracts/src/index.ts"],
       "@log/ref": ["libs/ref/src/index.ts"],
-      "@log/supply": ["libs/supply/src/index.ts"]
+      "@log/supply": ["libs/supply/src/index.ts"],
+      "@log/shipping": ["libs/shipping/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

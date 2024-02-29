@@ -55,5 +55,13 @@
       "style": "scss"
     }
   },
-  "parallel": 1
+  "parallel": 1,
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }

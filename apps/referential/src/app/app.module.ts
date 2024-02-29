@@ -11,6 +11,7 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver } from "@nestjs/apollo";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { environment } from "../environments/environment";
+import { ShippingModule } from "@log/shipping";
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { environment } from "../environments/environment";
     RefModule,
     ClientsModule,
     SupplyModule,
+    ShippingModule,
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       debug: true,
