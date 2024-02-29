@@ -1,14 +1,8 @@
-import { bootstrapApplication } from "@angular/platform-browser";
-import {
-  provideRouter,
-  withEnabledBlockingInitialNavigation
-} from "@angular/router";
-import { AppComponent } from "./app/app.component";
-import { appRoutes } from "./app/app.routes";
-import { provideHttpClient } from "@angular/common/http";
+import { appConfig } from './app/app.config';
+import { bootstrapApplication } from '@angular/platform-browser';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-    provideHttpClient()]
-}).catch((err) => console.error(err));
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig).catch((err) =>
+  console.error(err)
+);

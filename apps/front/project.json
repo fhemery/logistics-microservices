@@ -50,11 +50,11 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "front:build:production"
+          "buildTarget": "front:build:production"
         },
         "development": {
-          "browserTarget": "front:build:development",
-          "proxyConfig": "apps/front/src/proxy.conf.json"
+          "proxyConfig": "apps/front/src/proxy.conf.json",
+          "buildTarget": "front:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -62,28 +62,18 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "front:build"
+        "buildTarget": "front:build"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/front/**/*.ts", "apps/front/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/front/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "apps/front/jest.config.ts"
       }
     }
   },
